@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "minVersion": "0.7",
+  "package": "fr.elty.customnametag.mixins",
+  "refmap": "mixins.customnametag.refmap.json",
+  "compatibilityLevel": "JAVA_8",
+  "client": [
+    "MixinRender"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
