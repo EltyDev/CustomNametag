@@ -2,20 +2,16 @@ package fr.elty.customnametag.mixins;
 
 import fr.elty.customnametag.CustomNametagMod;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.entity.AbstractClientPlayer;
 import net.minecraft.client.entity.EntityOtherPlayerMP;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.WorldRenderer;
 import net.minecraft.client.renderer.entity.Render;
-import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
-import net.minecraft.client.shader.Framebuffer;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 
-import org.lwjgl.opengl.GL11;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
@@ -23,10 +19,6 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyArg;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-
-import java.lang.reflect.MalformedParameterizedTypeException;
-import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
 
 @Mixin(Render.class)
 public abstract class MixinRender<T extends Entity> {
@@ -76,10 +68,10 @@ public abstract class MixinRender<T extends Entity> {
         worldRenderer.begin(7, DefaultVertexFormats.POSITION_TEX);
         Minecraft.getMinecraft().getTextureManager().bindTexture(ICON_TEXTURE);
         int size = getFontRendererFromRenderManager().getStringWidth(SPACING + nametag)/2;
-        worldRenderer.pos((double)(-size), (double)(-1), 0.0D).tex(0, 1).endVertex();
-        worldRenderer.pos((double)(-size), (double)(8), 0.0D).tex(0, 0).endVertex();
-        worldRenderer.pos((double)(-size + 9), (double)(8), 0.0D).tex(1,0 ).endVertex();
-        worldRenderer.pos((double)(-size + 9), (double)(-1), 0.0D).tex(1, 1).endVertex();
+        worldRenderer.pos(-size, -1, 0.0D).tex(0, 1).endVertex();
+        worldRenderer.pos(-size, 8, 0.0D).tex(0, 0).endVertex();
+        worldRenderer.pos(-size + 9, 8, 0.0D).tex(1,0 ).endVertex();
+        worldRenderer.pos(-size + 9, -1, 0.0D).tex(1, 1).endVertex();
         tessellator.draw();
         GlStateManager.disableDepth();
         GlStateManager.depthMask(false);
