@@ -1,0 +1,15 @@
+[
+{
+  "modid": "customnametag",
+  "name": "Custom nametag",
+  "description": "Add custom icon before the player's nametag",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Elty"],
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
